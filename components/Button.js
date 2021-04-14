@@ -55,7 +55,6 @@ export default class Button extends React.Component {
         duration: 200,
         toValue: getValue(this.state.pressed, this.props.disabled),
         easing: Easing.out(Easing.quad),
-        useNativeDriver: false,
       }).start();
     }
   }
