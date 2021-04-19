@@ -11,6 +11,8 @@ import { invoke } from './controlFlow';
  * @param {string} url The initial URL
  * @returns {Promise} A promise resolving to the final URL
  */
+
+/*
 function getRedirectURL(url) {
   return new Promise(resolve => {
     const xhr = new XMLHttpRequest();
@@ -24,6 +26,18 @@ function getRedirectURL(url) {
     xhr.send(null);
   });
 }
+*/
+
+function getRedirectURL(url) {
+  return new Promise(resolve => {
+    fetch(url)
+    .then(function(response) {
+      if (response.ok) {
+        resolve(response.url);
+      }
+    })
+  });
+}
 
 /**
  * Fetch a random image
@@ -34,6 +48,6 @@ export async function getRandomImage() {
   const uri = await invoke({ retry: 3, timeout: 5000 }, () =>
     getRedirectURL('https://picsum.photos/600/600/?random'),
   );
-
+  console.log("redirect URL: "+uri);
   return { uri, width: 600, height: 600 };
 }
