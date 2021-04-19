@@ -45,7 +45,7 @@ export function createPuzzle(size) {
 function shuffleBoard(puzzle) {
   let previous = null;
 
-  for (let i = 0; i < 1000; i++) {
+  for (let i = 0; i < 20; i++) {
     const moves = movableSquares(puzzle).filter(
       square => square !== previous,
     );
